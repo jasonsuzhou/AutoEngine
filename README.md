@@ -16,7 +16,7 @@ git remote add origin https://github.com/jasonsuzhou/AutoEngine.git
 git pull https://github.com/jasonsuzhou/AutoEngine.git master
 git push -u origin master
 ```
-###Update file
+###Commit change to remote github
 ```bash
 #modified README.md and commit to github
 git add README.md #add to cache
