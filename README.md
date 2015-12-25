@@ -4,11 +4,12 @@ AUTO generate CURD java web application
 ---
 ###Get this project
 ```bash
-git clone https://github.com/jasonsuzhou/AutoEngine.git $HTTPS
+git clone https://github.com/jasonsuzhou/AutoEngine.git #HTTPS
 git clone git@github.com:jasonsuzhou/AutoEngine.git #SSH
 #Change HTTPS to SSH
 git remote remove origin
 git remote add origin git@github.com:jasonsuzhou/AutoEngine.git
+#git branch --set-upstream-to=origin/master master
 ```
 ###Inital a GitHub project
 - Create project via eclipse
