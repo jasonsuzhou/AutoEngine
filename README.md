@@ -2,11 +2,17 @@
 AUTO generate CURD java web application
 
 ---
+###Get this project
+```bash
+git clone https://github.com/jasonsuzhou/AutoEngine.git
+```
 ###Inital a GitHub project
 - Create project via eclipse
 - Create repository via github with the same project name 
 - Use GitBash cd into the project root path
 ```bash
+git config --global user.email "jason.yao525@gmail" #config your email id which is used by GitHub
+git config --global user.name "jasonsuzhou"         #config your username
 git init
 git add . # . means add all the files, not committed yet
 git commit -m "Initial the project" # just commit the code to local repository
