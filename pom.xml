@@ -26,6 +26,24 @@
 			<version>2.7.0-rc2</version>
 		</dependency>
 		<!-- JSON Tool end -->
+
+		<!-- DAO layer jar files begin -->
+		<!-- MyBatis -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.3.0</version>
+		</dependency>
+		<!-- DAO layer jar files end -->
+
+		<!-- Database Driver jar files begin -->
+		<!-- MySQL -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.38</version>
+		</dependency>
+		<!-- Database Driver jar files end -->
 	</dependencies>
 	<build>
 		<finalName>AutoEngine</finalName>

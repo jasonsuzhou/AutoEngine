@@ -1,0 +1,10 @@
+create database mybatis;
+use mybatis;
+create table `USERS_T` (
+	`ID` INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	`NAME` VARCHAR(64),
+	`AGE`  INT(11)
+);
+INSERT INTO `USERS_T`(`NAME`,`AGE`) VALUES ('JASON', 27);
+INSERT INTO `USERS_T`(`NAME`,`AGE`) VALUES ('TONY', 27);
+COMMIT;
