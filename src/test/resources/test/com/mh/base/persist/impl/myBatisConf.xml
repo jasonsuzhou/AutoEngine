@@ -7,6 +7,7 @@
 	<typeAliases>
 		<!-- set alias name one by one -->
 		<typeAlias type="test.com.mh.base.persist.impl.User" alias="_User"/>
+		<typeAlias type="test.com.mh.base.persist.impl.Order" alias="_Order"/>
 		<!-- batch set alias, default alias name is the class name
 		<package name="test.com.mh.base.persist.impl"/>
 		 -->
@@ -26,6 +27,7 @@
 	
 	<mappers>
 		<mapper resource="test/com/mh/base/persist/impl/myBatisUserMapper.xml"/>
+		<mapper resource="test/com/mh/base/persist/impl/myBatisOrderMapper.xml"/>
 	</mappers>
 	
 </configuration>

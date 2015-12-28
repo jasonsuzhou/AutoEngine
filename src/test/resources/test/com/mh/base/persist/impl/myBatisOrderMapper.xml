@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test.com.mh.base.persist.impl.myBatisOrderMapper">
+	<select id="getOrderById" parameterType="int" resultType="_Order">
+		select order_id id,order_no orderNo,order_price orderPrice from orders_t where order_id=#{id}
+	</select>
+	
+	<select id="selectOrderById" parameterType="int" resultMap="orderResultMap">
+		select * from orders_t where order_id=#{id}
+	</select>
+	<resultMap type="_Order" id="orderResultMap">
+		<id property="id" column="order_id"/>
+		<result property="orderNo" column="order_no"/>
+		<result property="orderPrice" column="order_price"/>
+	</resultMap>
+</mapper>

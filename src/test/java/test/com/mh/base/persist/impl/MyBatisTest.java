@@ -77,4 +77,18 @@ public class MyBatisTest {
 		int result = session.delete(statement, 3);
 		System.out.println("delete " + result + " rows affected.");
 	}
+
+	@Test
+	public void testGetOrderById() {
+		String statement = "test.com.mh.base.persist.impl.myBatisOrderMapper.getOrderById";
+		Order order = session.selectOne(statement, 1);
+		System.out.println("Result Order:" + order.getId() + ":" + order.getOrderNo() + ":" + order.getOrderPrice());
+	}
+	
+	@Test
+	public void testSelectOrderById() {
+		String statement = "test.com.mh.base.persist.impl.myBatisOrderMapper.selectOrderById";
+		Order order = session.selectOne(statement, 1);
+		System.out.println("Result Order:" + order.getId() + ":" + order.getOrderNo() + ":" + order.getOrderPrice());
+	}
 }
