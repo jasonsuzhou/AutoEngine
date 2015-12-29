@@ -47,6 +47,20 @@ public abstract class MyBatisTemplate<T, K> implements DatabaseOperation<T, K> {
 		return "com.mh.proj.persist.domain";
 	}
 
+	public int insertSelective(T obj) {
+		StringBuilder statement = new StringBuilder(32);
+		statement.append(getMapperLocatedPackage()).append(".myBatis").append(getSimpleClassName()).append("Mapper.add")
+				.append(getSimpleClassName()).append("Selective");
+		return getSession().insert(statement.toString(), obj);
+	}
+
+	public int updateByIdSelective(T obj) {
+		StringBuilder statement = new StringBuilder(32);
+		statement.append(getMapperLocatedPackage()).append(".myBatis").append(getSimpleClassName())
+				.append("Mapper.update").append(getSimpleClassName()).append("ByIdSelective");
+		return getSession().update(statement.toString(), obj);
+	}
+
 	public abstract String getSimpleClassName();
 
 	public abstract SqlSession getSession();

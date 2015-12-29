@@ -61,12 +61,41 @@ public class MyBatisTest {
 	}
 
 	@Test
+	public void testAddUserSelective() {
+		String statement = "test.com.mh.base.persist.impl.myBatisUserMapper.addUserSelective";
+		User user = new User();
+		user.setName("salk" + new Random().nextInt(999));
+		int result = session.insert(statement, user);
+		System.out.println("insert " + result + " rows affected.");
+	}
+	
+	@Test
 	public void testUpdateUser() {
 		String statement = "test.com.mh.base.persist.impl.myBatisUserMapper.updateUser";
 		User user = new User();
 		user.setId(1);
 		user.setName("Jason");
 		user.setAge(27);
+		int result = session.update(statement, user);
+		System.out.println("update " + result + " rows affected.");
+	}
+	
+	@Test
+	public void testUpdateUserByIdSelectiveNoName() {
+		String statement = "test.com.mh.base.persist.impl.myBatisUserMapper.updateUserByIdSelective";
+		User user = new User();
+		user.setId(1);
+		user.setAge(20);
+		int result = session.update(statement, user);
+		System.out.println("update " + result + " rows affected.");
+	}
+	
+	@Test
+	public void testUpdateUserByIdSelectiveNoAge() {
+		String statement = "test.com.mh.base.persist.impl.myBatisUserMapper.updateUserByIdSelective";
+		User user = new User();
+		user.setId(1);
+		user.setName("Jason");
 		int result = session.update(statement, user);
 		System.out.println("update " + result + " rows affected.");
 	}

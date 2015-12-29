@@ -8,6 +8,37 @@
 	<insert id="addUser" parameterType="_User">
 		insert into users_t(name,age) values (#{name},#{age})
 	</insert>
+	<insert id="addUserSelective" parameterType="_User">
+		insert into users_t
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="name != null">
+				name,
+			</if>
+			<if test="age != null">
+				age,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="name != null">
+				#{name},
+			</if>
+			<if test="age != null">
+				#{age},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateUserByIdSelective" parameterType="_User">
+		update users_t 
+		<set>
+			<if test="name != null">
+				name=#{name},
+			</if>
+			<if test="age > 0">
+				age=#{age},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
 	<delete id="deleteUser" parameterType="int">
 		delete from users_t where id=#{id}
 	</delete>

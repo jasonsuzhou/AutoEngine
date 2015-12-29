@@ -69,7 +69,7 @@ public class ProjDomainClassScanner {
 		propertyValueList.deleteCharAt(propertyValueList.length() - 1);
 		updatePropertyList.deleteCharAt(updatePropertyList.length() - 1);
 		MyBatisMapperGenerator.generateMyBatisMapperFile(domainFileName, propertyList.toString(),
-				propertyValueList.toString(), updatePropertyList.toString());
+				propertyValueList.toString(), updatePropertyList.toString(), fieldList);
 
 		MySQLGenerator.preapareData(domainFileName, fieldList);
 	}

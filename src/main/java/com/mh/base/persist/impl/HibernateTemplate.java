@@ -31,4 +31,14 @@ public class HibernateTemplate<T, K> implements DatabaseOperation<T, K> {
 		return null;
 	}
 
+	public int insertSelective(T obj) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int updateByIdSelective(T obj) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
