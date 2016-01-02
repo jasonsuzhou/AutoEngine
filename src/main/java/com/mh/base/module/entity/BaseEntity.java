@@ -1,6 +1,7 @@
 package com.mh.base.module.entity;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 
 public class BaseEntity implements Serializable {
@@ -15,6 +16,12 @@ public class BaseEntity implements Serializable {
 	private Date lastUpdatedDate;
 	private String creationBy;
 	private String lastUpdatedBy;
+
+	public BaseEntity() {
+		Date currDate = Calendar.getInstance().getTime();
+		this.creationDate = currDate;
+		this.lastUpdatedDate = currDate;
+	}
 
 	public int getId() {
 		return id;

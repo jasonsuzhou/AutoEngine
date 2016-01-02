@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
- <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- Auto generated at ${generationTime} -->
 <configuration>
-
-	<properties resource="test/com/mh/base/persist/impl/mysql_db_info.properties" />
+	<properties resource="com/mh/proj/persist/domain/mysql_db_info.properties" />
 
 	<typeAliases>
 		<!-- set alias name one by one -->
-		<typeAlias type="test.com.mh.base.persist.impl.User" alias="_User"/>
-		<typeAlias type="test.com.mh.base.persist.impl.Order" alias="_Order"/>
+		<#list classNames as item>
+		<typeAlias type="com.mh.proj.persist.domain.${item}" alias="_${item}"/>
+		</#list>
 		<!-- batch set alias, default alias name is the class name
 		<package name="test.com.mh.base.persist.impl"/>
 		 -->
@@ -26,8 +27,9 @@
 	</environments>
 	
 	<mappers>
-		<mapper resource="test/com/mh/base/persist/impl/myBatisUserMapper.xml"/>
-		<mapper resource="test/com/mh/base/persist/impl/myBatisOrderMapper.xml"/>
+		<#list classNames as item>
+		<mapper resource="com/mh/proj/persist/domain/myBatis${item}Mapper.xml"/>
+		</#list>
 	</mappers>
 	
 </configuration>
