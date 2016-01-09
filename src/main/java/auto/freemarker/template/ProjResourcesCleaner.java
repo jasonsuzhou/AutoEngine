@@ -12,6 +12,8 @@ public class ProjResourcesCleaner {
 		cleanPaths.add(FreemarkerUtil.getProjJavaDAOImplPath());
 		cleanPaths.add(FreemarkerUtil.getProjJavaDomainPath());
 		cleanPaths.add(FreemarkerUtil.getProjResourceDomainPath());
+		cleanPaths.add(FreemarkerUtil.getProjJavaServicePath());
+		cleanPaths.add(FreemarkerUtil.getProjJavaServiceImplPath());
 	}
 
 	public static void main(String[] args) {

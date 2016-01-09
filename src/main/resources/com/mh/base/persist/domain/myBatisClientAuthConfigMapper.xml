@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- Auto generated at 2016-01-07 16:36:50 -->
+<mapper namespace="com.mh.base.persist.domain.myBatisClientAuthConfigMapper">
+	<select id="getClientAuthConfigById" parameterType="int" 
+			resultType="_ClientAuthConfig">
+		select * from `ClientAuthConfig` where id=#{id}
+	</select>
+	<select id="getClientAuthConfigByCondition" parameterType="_ClientAuthConfig" 
+			resultType="_ClientAuthConfig">
+		select * from `ClientAuthConfig` 
+		<trim prefix="where" prefixOverrides="and|or"> 
+			1 = 1
+			<if test="id != null and id != ''">
+				and id = #{id}
+			</if>
+			<if test="appId != null and appId != ''">
+				and appId = #{appId}
+			</if>
+			<if test="appSecret != null and appSecret != ''">
+				and appSecret = #{appSecret}
+			</if>
+			<if test="nonce != null and nonce != ''">
+				and nonce = #{nonce}
+			</if>
+		</trim>
+	</select>
+	<insert id="addClientAuthConfig" parameterType="_ClientAuthConfig">
+		insert into `ClientAuthConfig`(creationDate,appId,creationBy,nonce,lastUpdatedBy,lastUpdatedDate,appSecret) values (#{creationDate},#{appId},#{creationBy},#{nonce},#{lastUpdatedBy},#{lastUpdatedDate},#{appSecret})
+	</insert>
+	<insert id="addClientAuthConfigSelective" parameterType="_ClientAuthConfig">
+		insert into `ClientAuthConfig`
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="creationDate != null">
+				creationDate,
+			</if>
+			<if test="lastUpdatedDate != null">
+				lastUpdatedDate,
+			</if>
+			<if test="creationBy != null">
+				creationBy,
+			</if>
+			<if test="lastUpdatedBy != null">
+				lastUpdatedBy,
+			</if>
+			<if test="appId != null">
+				appId,
+			</if>
+			<if test="appSecret != null">
+				appSecret,
+			</if>
+			<if test="nonce != null">
+				nonce,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="lastUpdatedDate != null">
+				#{lastUpdatedDate},
+			</if>
+			<if test="creationBy != null">
+				#{creationBy},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy},
+			</if>
+			<if test="appId != null">
+				#{appId},
+			</if>
+			<if test="appSecret != null">
+				#{appSecret},
+			</if>
+			<if test="nonce != null">
+				#{nonce},
+			</if>
+		</trim>
+	</insert>
+	<delete id="deleteClientAuthConfigById" parameterType="int">
+		delete from `ClientAuthConfig` where id=#{id}
+	</delete>
+	<delete id="deleteClientAuthConfigList">
+		delete from `ClientAuthConfig` where id in
+		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+		#{item}
+		</foreach>
+	</delete>
+	<delete id="deleteClientAuthConfigArray">
+		delete from `ClientAuthConfig` where id in
+		<foreach collection="array" index="index" item="item" open="(" separator="," close=")">
+		#{item}
+		</foreach>
+	</delete>
+	<update id="updateClientAuthConfigById" parameterType="_ClientAuthConfig">
+		update `ClientAuthConfig` set creationDate=#{creationDate},appId=#{appId},creationBy=#{creationBy},nonce=#{nonce},lastUpdatedBy=#{lastUpdatedBy},lastUpdatedDate=#{lastUpdatedDate},appSecret=#{appSecret} where id=#{id}
+	</update>
+	<update id="updateClientAuthConfigByIdSelective" parameterType="_ClientAuthConfig">
+		update `ClientAuthConfig`
+		<set>
+			<if test="creationDate != null">
+				creationDate=#{creationDate},
+			</if>
+			<if test="lastUpdatedDate != null">
+				lastUpdatedDate=#{lastUpdatedDate},
+			</if>
+			<if test="creationBy != null">
+				creationBy=#{creationBy},
+			</if>
+			<if test="lastUpdatedBy != null">
+				lastUpdatedBy=#{lastUpdatedBy},
+			</if>
+			<if test="appId != null">
+				appId=#{appId},
+			</if>
+			<if test="appSecret != null">
+				appSecret=#{appSecret},
+			</if>
+			<if test="nonce != null">
+				nonce=#{nonce},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+	<select id="getAllClientAuthConfigList" resultType="_ClientAuthConfig">
+		select * from `ClientAuthConfig`
+	</select>
+</mapper>

@@ -31,6 +31,9 @@ public class MyBatisHelper {
 			isInit = true;
 		}
 		return session;
+	}
 
+	public static SqlSession getSession(SqlSessionFactory sqlSessionFactory) {
+		return sqlSessionFactory.openSession(false);
 	}
 }

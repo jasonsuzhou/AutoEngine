@@ -6,6 +6,38 @@
 			resultType="_${className}">
 		select * from `${className}` where id=${primaryKeyName}
 	</select>
+	<select id="get${className}ByCondition" parameterType="_${className}" 
+			resultType="_${className}">
+		select * from `${className}` 
+		<trim prefix="where" prefixOverrides="and|or"> 
+			1 = 1
+		<#list fieldList>
+		<#items as field>
+		<#if field.name != "creationDate" && field.name != "lastUpdatedDate" && field.name != "creationBy" && field.name != "lastUpdatedBy">
+			<if test="${field.name} != null and ${field.name} != ''">
+				and ${field.name} = ${"#{"}${field.name}${"}"}
+			</if>
+		</#if> 
+		</#items>
+		</#list>
+		</trim>
+	</select>
+	<select id="get${className}ByPager" parameterType="_${className}" 
+			resultType="_${className}">
+		select * from `${className}` 
+		<trim prefix="where" prefixOverrides="and|or"> 
+			1 = 1
+		<#list fieldList>
+		<#items as field>
+		<#if field.name != "creationDate" && field.name != "lastUpdatedDate" && field.name != "creationBy" && field.name != "lastUpdatedBy">
+			<if test="${field.name} != null and ${field.name} != ''">
+				and ${field.name} like concat('%',${"#{"}${field.name}${"}"},'%')
+			</if>
+		</#if> 
+		</#items>
+		</#list>
+		</trim>
+	</select>
 	<insert id="add${className}" parameterType="_${className}">
 		insert into `${className}`(${propertyList}) values (${propertyValueList})
 	</insert>
@@ -38,6 +70,18 @@
 	</insert>
 	<delete id="delete${className}ById" parameterType="${parameterType}">
 		delete from `${className}` where id=${primaryKeyName}
+	</delete>
+	<delete id="delete${className}List">
+		delete from `${className}` where id in
+		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+		${"#{"}item${"}"}
+		</foreach>
+	</delete>
+	<delete id="delete${className}Array">
+		delete from `${className}` where id in
+		<foreach collection="array" index="index" item="item" open="(" separator="," close=")">
+		${"#{"}item${"}"}
+		</foreach>
 	</delete>
 	<update id="update${className}ById" parameterType="_${className}">
 		update `${className}` set ${updatePropertyList} where id=${primaryKeyName}

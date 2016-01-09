@@ -11,9 +11,9 @@ import freemarker.template.Template;
 import freemarker.template.Version;
 
 public class FreemarkerUtil {
-	
+
 	public static final String TEMPLATE_PATH = "/auto/freemarker/template/";
-	
+
 	public static Template getTemplate(String packagePath, String ftlFileName) throws Exception {
 		Configuration cfg = new Configuration(new Version("2.3.23"));
 		cfg.setClassForTemplateLoading(MyBatisMapperGenerator.class, packagePath);
@@ -30,13 +30,21 @@ public class FreemarkerUtil {
 	public static String getProjResourceDomainPath() {
 		return getAppRootPath() + "/src/main/resources/com/mh/proj/persist/domain/";
 	}
-	
+
 	public static String getProjJavaDAOPath() {
 		return getAppRootPath() + "/src/main/java/com/mh/proj/persist/dao/";
 	}
 
+	public static String getProjJavaServicePath() {
+		return getAppRootPath() + "/src/main/java/com/mh/proj/manage/service/";
+	}
+
 	public static String getProjJavaDAOImplPath() {
 		return getAppRootPath() + "/src/main/java/com/mh/proj/persist/dao/impl/";
+	}
+
+	public static String getProjJavaServiceImplPath() {
+		return getAppRootPath() + "/src/main/java/com/mh/proj/manage/service/impl/";
 	}
 
 	public static String getProjJavaDomainPath() {
@@ -46,11 +54,12 @@ public class FreemarkerUtil {
 	public static String getProjDomainClassPath(String simpleClassName) {
 		return "com.mh.proj.persist.domain." + simpleClassName;
 	}
-	
+
 	public static String getGenerationDateTime() {
 		Calendar cal = Calendar.getInstance();
 		Date date = cal.getTime();
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return dateFormat.format(date);
 	}
+
 }

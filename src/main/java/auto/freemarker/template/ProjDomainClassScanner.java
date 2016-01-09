@@ -19,6 +19,7 @@ public class ProjDomainClassScanner {
 				if (!fileName.equals("DonotRemove.java")) {
 					processGenerationForMyBatisMapper(fileName.substring(0, fileName.indexOf(".")));
 					processGenerationForDAOLayer(fileName.substring(0, fileName.indexOf(".")));
+					processGenerationForServiceLayer(fileName.substring(0, fileName.indexOf(".")));
 					simpleClassNames.add(fileName.substring(0, fileName.indexOf(".")));
 				}
 			}
@@ -30,6 +31,11 @@ public class ProjDomainClassScanner {
 	public static void processGenerationForDAOLayer(String domainFileName) throws Exception {
 		DAOGenerator.generateDAOJavaCode(domainFileName);
 		MyBatisDAOImplGenerator.generateDAOImplJavaCode(domainFileName);
+	}
+
+	public static void processGenerationForServiceLayer(String domainFileName) throws Exception {
+		ServiceGenerator.generateServiceJavaCode(domainFileName);
+		ServiceImplGenerator.generateServiceJavaCode(domainFileName);
 	}
 
 	public static void processGenerationForMyBatisMapper(String domainFileName) throws Exception {

@@ -2,9 +2,17 @@ package com.mh.base.persist.api;
 
 import java.util.List;
 
+import com.mh.base.persist.util.Pager;
+
 public interface DatabaseOperation<T, K> {
 
 	T queryOneById(K key);
+
+	T queryOneByCondition(T key);
+
+	List<T> queryListByCondition(T key);
+
+	Pager<T> queryListByPager(T key, Pager<T> pager);
 
 	List<T> queryAll();
 
@@ -27,6 +35,10 @@ public interface DatabaseOperation<T, K> {
 	int insertSelective(T obj);
 
 	int deleteById(K key);
+	
+	int deleteByIds(List<K> keys);
+	
+	int deleteByIds(K[] keys);
 
 	/**
 	 * update all the properties<br/>
