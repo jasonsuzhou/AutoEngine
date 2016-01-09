@@ -50,5 +50,8 @@ mkdir .ssh
 ```bash
 notepad id_rsa.pub
 ```
-###TODO
+###Spring-Boot
+```bash
+mvn clean spring-boot:repackage
+```
 
