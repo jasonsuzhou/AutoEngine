@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mh.base.persist.domain.myBatisFunctionMapper">
+	<select id="getFunctionById" parameterType="int" 
+			resultMap="funcResultMap">
+		select * from `SYS_FUNCTION` where id=#{id}
+	</select>
+	<select id="getFunctionByCondition" parameterType="_Function" 
+			resultMap="funcResultMap">
+		select * from `SYS_FUNCTION` 
+		<trim prefix="where" prefixOverrides="and|or"> 
+			1 = 1
+			<if test="level != 0">
+				and func_level = #{level}
+			</if>
+			<if test="link != null">
+				and func_link = #{link}
+			</if>
+			<if test="name != null">
+				and func_name = #{name}
+			</if>
+		</trim>
+	</select>
+	<insert id="addFunctionSelective" parameterType="_Function">
+		insert into `SYS_FUNCTION`
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="creationDate != null">
+				creation_date,
+			</if>
+			<if test="lastUpdatedDate != null">
+				last_updated_date,
+			</if>
+			<if test="creationBy != null">
+				created_by,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by,
+			</if>
+			<if test="name != null">
+				func_name,
+			</if>
+			<if test="link != null">
+				func_link,
+			</if>
+			<if test="parent != 0">
+				parent_func_id,
+			</if>
+			<if test="level != 0">
+				func_level,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="lastUpdatedDate != null">
+				#{lastUpdatedDate},
+			</if>
+			<if test="creationBy != null">
+				#{creationBy},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy},
+			</if>
+			<if test="name != null">
+				#{name},
+			</if>
+			<if test="link != null">
+				#{link},
+			</if>
+			<if test="parent != 0">
+				#{parent},
+			</if>
+			<if test="level != 0">
+				#{level},
+			</if>
+		</trim>
+	</insert>
+	<delete id="deleteFunctionById" parameterType="int">
+		delete from `SYS_FUNCTION` where id=#{id}
+	</delete>
+	<delete id="deleteFunctionList">
+		delete from `SYS_FUNCTION` where id in
+		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+		#{item}
+		</foreach>
+	</delete>
+	<delete id="deleteFunctionArray">
+		delete from `SYS_FUNCTION` where id in
+		<foreach collection="array" index="index" item="item" open="(" separator="," close=")">
+		#{item}
+		</foreach>
+	</delete>
+	<resultMap type="_Function" id="funcResultMap">
+		<id property="id" column="order_id"/>
+		<result property="creationDate" column="creation_date"/>
+		<result property="lastUpdatedDate" column="last_updated_date"/>
+		<result property="creationBy" column="created_by"/>
+		<result property="lastUpdatedBy" column="last_updated_by"/>
+		<result property="name" column="func_name"/>
+		<result property="link" column="func_link"/>
+		<result property="parent" column="parent_func_id"/>
+		<result property="level" column="func_level"/>
+	</resultMap>
+</mapper>

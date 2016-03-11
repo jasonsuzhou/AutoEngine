@@ -15,17 +15,24 @@ public class ProjDomainClassScanner {
 		List<String> simpleClassNames = new ArrayList<String>();
 		if (file.exists() && file.isDirectory()) {
 			String[] fileNames = file.list();
+			String simpleFiledName = null;
 			for (String fileName : fileNames) {
 				if (!fileName.equals("DonotRemove.java")) {
-					processGenerationForMyBatisMapper(fileName.substring(0, fileName.indexOf(".")));
-					processGenerationForDAOLayer(fileName.substring(0, fileName.indexOf(".")));
-					processGenerationForServiceLayer(fileName.substring(0, fileName.indexOf(".")));
-					simpleClassNames.add(fileName.substring(0, fileName.indexOf(".")));
+					simpleFiledName = fileName.substring(0, fileName.indexOf("."));
+					processGenerationForMyBatisMapper(simpleFiledName);
+					processGenerationForDAOLayer(simpleFiledName);
+					processGenerationForServiceLayer(simpleFiledName);
+					processGenerationForPageLayer(simpleFiledName);
+					simpleClassNames.add(simpleFiledName);
 				}
 			}
 		}
 		MyBatisConfGenerator.generateMyBatisConfFile(simpleClassNames);
 		MySQLGenerator.startGenerateSQL();
+	}
+
+	public static void processGenerationForPageLayer(String domainFileName) throws Exception {
+		PageGenerator.generateAddPage(domainFileName);
 	}
 
 	public static void processGenerationForDAOLayer(String domainFileName) throws Exception {

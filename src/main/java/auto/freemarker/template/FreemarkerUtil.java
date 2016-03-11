@@ -27,6 +27,15 @@ public class FreemarkerUtil {
 		return tempFile.getPath();
 	}
 
+	public static String getAdminResourceTemplatesPath(String simpleClassName) {
+		String folderPath = getAppRootPath() + "/src/main/resources/templates/adminmgr/" + simpleClassName.toLowerCase() + "/";
+		File file = new File(folderPath);
+		if (!file.exists()) {
+			file.mkdir();
+		}
+		return folderPath;
+	}
+
 	public static String getProjResourceDomainPath() {
 		return getAppRootPath() + "/src/main/resources/com/mh/proj/persist/domain/";
 	}

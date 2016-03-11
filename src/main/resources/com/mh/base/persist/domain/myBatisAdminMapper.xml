@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- Auto generated at 2016-01-15 13:24:18 -->
+<mapper namespace="com.mh.base.persist.domain.myBatisAdminMapper">
+	<select id="getAllAdminList" resultMap="adminResultMap">
+		select * from `SYS_ADMIN`
+	</select>
+	<select id="getAdminById" parameterType="int" resultMap="adminResultMap">
+	    select * from `SYS_ADMIN` where id=#{id}
+	</select>
+	<select id="getAdminByCondition" parameterType="_Admin"
+		resultMap="adminResultMap">
+		select * from `SYS_ADMIN`
+		<trim prefix="where" prefixOverrides="and|or">
+			1 = 1
+			<if test="username != null and username != ''">
+				and username = #{username}
+			</if>
+			<if test="password != null and password != ''">
+				and password = #{password}
+			</if>
+		</trim>
+	</select>
+	<insert id="addAdminSelective" parameterType="_Admin">
+		insert into `SYS_ADMIN`
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="creationDate != null">
+				creation_date,
+			</if>
+			<if test="lastUpdatedDate != null">
+				last_updated_date,
+			</if>
+			<if test="creationBy != null">
+				created_by,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by,
+			</if>
+			<if test="username != null and username != ''">
+				username,
+			</if>
+			<if test="password != null and password != ''">
+				password,
+			</if>
+			<if test="salt != null and salt != ''">
+				salt,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="lastUpdatedDate != null">
+				#{lastUpdatedDate},
+			</if>
+			<if test="creationBy != null">
+				#{creationBy},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy},
+			</if>
+			<if test="username != null and username != ''">
+				#{username},
+			</if>
+			<if test="password != null and password != ''">
+				#{password},
+			</if>
+			<if test="salt != null and salt != ''">
+				#{salt},
+			</if>
+		</trim>
+	</insert>
+	<delete id="deleteAdminById" parameterType="int">
+		delete from `SYS_ADMIN` where id=#{id}
+	</delete>
+	<resultMap type="_Admin" id="adminResultMap">
+		<id property="id" column="id" />
+		<result property="creationDate" column="creation_date" />
+		<result property="lastUpdatedDate" column="last_updated_date" />
+		<result property="creationBy" column="created_by" />
+		<result property="lastUpdatedBy" column="last_updated_by" />
+		<result property="username" column="username" />
+		<result property="password" column="password" />
+		<result property="salt" column="salt" />
+	</resultMap>
+</mapper>

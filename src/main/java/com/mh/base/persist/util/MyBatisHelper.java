@@ -34,6 +34,6 @@ public class MyBatisHelper {
 	}
 
 	public static SqlSession getSession(SqlSessionFactory sqlSessionFactory) {
-		return sqlSessionFactory.openSession(false);
+		return sqlSessionFactory == null ? null : sqlSessionFactory.openSession(false);
 	}
 }

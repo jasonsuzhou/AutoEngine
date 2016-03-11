@@ -7,6 +7,8 @@
 	<typeAliases>
 		<!-- set alias name one by one -->
 		<typeAlias type="com.mh.base.persist.domain.ClientAuthConfig" alias="_ClientAuthConfig"/>
+		<typeAlias type="com.mh.base.persist.domain.Admin" alias="_Admin"/>
+		<typeAlias type="com.mh.base.persist.domain.Function" alias="_Function"/>
 		<!-- batch set alias, default alias name is the class name
 		<package name="test.com.mh.base.persist.impl"/>
 		 -->
@@ -27,6 +29,8 @@
 	 -->
 	<mappers>
 		<mapper resource="com/mh/base/persist/domain/myBatisClientAuthConfigMapper.xml"/>
+		<mapper resource="com/mh/base/persist/domain/myBatisAdminMapper.xml"/>
+		<mapper resource="com/mh/base/persist/domain/myBatisFunctionMapper.xml"/>
 	</mappers>
 	
 </configuration>

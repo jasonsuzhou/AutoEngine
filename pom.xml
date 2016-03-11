@@ -10,7 +10,7 @@
 
 	<properties>
 		<!-- tell the springboot the main class when packaging to jar file -->
-		<start-class>com.mh.base.web.springboot.controller.Application</start-class>
+		<start-class>Application</start-class>
 	</properties>
 
 	<parent>
@@ -41,12 +41,18 @@
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<!-- if need render XML/HTML/XHTML spring use this one <dependency> <groupId>org.springframework.boot</groupId> 
+			<artifactId>spring-boot-starter-thymeleaf</artifactId> </dependency> -->
+		<!-- render page by FREEMARKER -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-freemarker</artifactId>
+		</dependency>
 		<!-- Spring End -->
 		<!-- FREEMARKER Begin -->
 		<dependency>
 			<groupId>org.freemarker</groupId>
 			<artifactId>freemarker</artifactId>
-			<version>2.3.23</version><!--$NO-MVN-MAN-VER$ -->
 		</dependency>
 		<!-- FREEMARKER End -->
 		<!-- JSON Tool begin -->
@@ -92,6 +98,13 @@
 			<artifactId>spring-jdbc</artifactId>
 		</dependency>
 		<!-- Database Driver jar files end -->
+
+		<!-- Email Support -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-email</artifactId>
+			<version>1.4</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>AutoEngine</finalName>
@@ -99,6 +112,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
+				</configuration>
 				<!-- mvn spring-boot:repackage -->
 				<executions>
 					<execution>

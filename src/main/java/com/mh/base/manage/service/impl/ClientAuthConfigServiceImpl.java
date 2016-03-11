@@ -20,49 +20,58 @@ public class ClientAuthConfigServiceImpl implements ClientAuthConfigService {
 	private ClientAuthConfigDAO clientAuthConfigDAOImpl;
 
 	@Override
+	@Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
 	public ClientAuthConfig getClientAuthConfig(int key) {
 		return clientAuthConfigDAOImpl.queryOneById(key);
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
 	public ClientAuthConfig getClientAuthConfig(ClientAuthConfig key) {
-		// TODO Auto-generated method stub
-		return null;
+		return clientAuthConfigDAOImpl.queryOneByCondition(key);
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
 	public List<ClientAuthConfig> getClientAuthConfigList(ClientAuthConfig key) {
-		return this.clientAuthConfigDAOImpl.queryAll();
+		return clientAuthConfigDAOImpl.queryAll();
 	}
 
 	@Override
-	public Pager<ClientAuthConfig> getClientAuthConfigPager(ClientAuthConfig key) {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
+	public Pager<ClientAuthConfig> getClientAuthConfigPager(ClientAuthConfig key, Pager<ClientAuthConfig> pager) {
+		return clientAuthConfigDAOImpl.queryListByPager(key, pager);
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false, rollbackFor = Exception.class)
 	public int updateClientAuthConfig(int key, ClientAuthConfig obj) {
-		// TODO Auto-generated method stub
-		return 0;
+		obj.setId(key);
+		return clientAuthConfigDAOImpl.updateByIdSelective(obj);
 	}
 
 	@Override
-	public int updateClientAuthConfig(ClientAuthConfig key, ClientAuthConfig obj) {
-		// TODO Auto-generated method stub
-		return 0;
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false, rollbackFor = Exception.class)
+	public int updateClientAuthConfig(ClientAuthConfig obj) {
+		return clientAuthConfigDAOImpl.updateById(obj);
 	}
 
 	@Override
-	public int deleteClientAuthConfig(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false, rollbackFor = Exception.class)
+	public int deleteClientAuthConfig(int key) {
+		return clientAuthConfigDAOImpl.deleteById(key);
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false, rollbackFor = Exception.class)
 	public int deleteClientAuthConfig(ClientAuthConfig key) {
-		// TODO Auto-generated method stub
-		return 0;
+		return clientAuthConfigDAOImpl.deleteById(key.getId());
+	}
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false, rollbackFor = Exception.class)
+	public int deleteClientAuthConfigList(List<Integer> keys) {
+		return clientAuthConfigDAOImpl.deleteByIds(keys);
 	}
 
 	@Override

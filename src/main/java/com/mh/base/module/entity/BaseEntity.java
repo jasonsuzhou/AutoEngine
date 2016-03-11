@@ -17,7 +17,7 @@ public class BaseEntity implements Serializable {
 	private String creationBy;
 	private String lastUpdatedBy;
 
-	public BaseEntity() {
+	public void initDate() {
 		Date currDate = Calendar.getInstance().getTime();
 		this.creationDate = currDate;
 		this.lastUpdatedDate = currDate;

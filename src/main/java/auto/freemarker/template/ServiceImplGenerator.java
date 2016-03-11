@@ -5,6 +5,8 @@ import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.util.StringUtils;
+
 import freemarker.template.Template;
 
 public class ServiceImplGenerator {
@@ -27,7 +29,12 @@ public class ServiceImplGenerator {
 	private static Map<String, Object> prepareData(String simpleClassName) {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("simpleClassName", simpleClassName);
+		params.put("lowerSimpleClassName", getFirstCharLower(simpleClassName));
 		return params;
+	}
+
+	private static Object getFirstCharLower(String simpleClassName) {
+		return StringUtils.uncapitalize(simpleClassName);
 	}
 
 }

@@ -12,6 +12,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.mh.base.persist.util.JSON;
+import com.mh.base.web.util.JQueryDataTableChinese;
+import com.mh.base.web.util.JSONHttpResponse;
 
 public class JSONTest {
 
@@ -20,6 +22,19 @@ public class JSONTest {
 		String result = JSON.convertToJSONString(prepareUser());
 		System.out.println(result);
 		Assert.assertEquals("{\"id\":1,\"name\":\"jason\",\"role\":\"admin\"}", result);
+	}
+	
+	@Test
+	public void testSingleBeanToString2() {
+		String result = JSON.convertToJSONString(prepareUser2());
+		System.out.println(result);
+	}
+	
+	@Test
+	public void testJSONHttpResponse() {
+		String rtn = new JSONHttpResponse(JSONHttpResponse.ERROR,
+				"测试中文").toJSONString();
+		System.out.println(rtn);
 	}
 
 	@Test
@@ -107,11 +122,21 @@ public class JSONTest {
 	private User prepareUser() {
 		return new User(1, "jason", "admin");
 	}
+	
+	private User prepareUser2() {
+		return new User(1, "詹森", "管理员");
+	}
 
 	private List<User> prepareListUser() {
 		List<User> listUser = new ArrayList<User>();
 		listUser.add(new User(2, "sunny", "user"));
 		listUser.add(new User(3, "salk", "admin"));
 		return listUser;
+	}
+	
+	@Test
+	public void testJQueryDataTableLanguageJSON() {
+		JQueryDataTableChinese language = JQueryDataTableChinese.getInstance();
+		System.out.println(language.toJSONString());
 	}
 }

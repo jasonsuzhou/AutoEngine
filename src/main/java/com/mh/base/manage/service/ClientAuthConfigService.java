@@ -13,15 +13,17 @@ public interface ClientAuthConfigService {
 
 	List<ClientAuthConfig> getClientAuthConfigList(ClientAuthConfig key);
 
-	Pager<ClientAuthConfig> getClientAuthConfigPager(ClientAuthConfig key);
+	Pager<ClientAuthConfig> getClientAuthConfigPager(ClientAuthConfig key, Pager<ClientAuthConfig> pager);
 
 	int updateClientAuthConfig(int key, ClientAuthConfig obj);
 
-	int updateClientAuthConfig(ClientAuthConfig key, ClientAuthConfig obj);
+	int updateClientAuthConfig(ClientAuthConfig obj);
 
-	int deleteClientAuthConfig(int id);
+	int deleteClientAuthConfig(int key);
 
 	int deleteClientAuthConfig(ClientAuthConfig key);
+
+	int deleteClientAuthConfigList(List<Integer> keys);
 
 	int insertClientAuthConfig(ClientAuthConfig obj);
 
