@@ -6,13 +6,15 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.junit.Test;
+
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.Version;
 
 public class FreemarkerUtil {
 
-	public static final String TEMPLATE_PATH = "/auto/freemarker/template/";
+	public static final String TEMPLATE_PATH = File.separator+"auto"+File.separator+"freemarker"+File.separator+"template"+File.separator;
 
 	public static Template getTemplate(String packagePath, String ftlFileName) throws Exception {
 		Configuration cfg = new Configuration(new Version("2.3.23"));
@@ -28,7 +30,7 @@ public class FreemarkerUtil {
 	}
 
 	public static String getAdminResourceTemplatesPath(String simpleClassName) {
-		String folderPath = getAppRootPath() + "/src/main/resources/templates/adminmgr/" + simpleClassName.toLowerCase() + "/";
+		String folderPath = getAppRootPath() + File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"templates"+File.separator+"adminmgr"+File.separator + simpleClassName.toLowerCase() + File.separator+"";
 		File file = new File(folderPath);
 		if (!file.exists()) {
 			file.mkdir();
@@ -37,27 +39,28 @@ public class FreemarkerUtil {
 	}
 
 	public static String getProjResourceDomainPath() {
-		return getAppRootPath() + "/src/main/resources/com/mh/proj/persist/domain/";
+		return getAppRootPath() + File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"com"+File.separator+"mh"+File.separator+"proj"+File.separator+"persist"+File.separator+"domain"+File.separator;
 	}
 
 	public static String getProjJavaDAOPath() {
-		return getAppRootPath() + "/src/main/java/com/mh/proj/persist/dao/";
+		String path = getAppRootPath() + File.separator+"src"+File.separator+"main"+File.separator+"java"+File.separator+"com"+File.separator+"mh"+File.separator+"proj"+File.separator+"persist"+File.separator+"dao"+File.separator;
+		return getAppRootPath() + File.separator+"src"+File.separator+"main"+File.separator+"java"+File.separator+"com"+File.separator+"mh"+File.separator+"proj"+File.separator+"persist"+File.separator+"dao"+File.separator;
 	}
 
 	public static String getProjJavaServicePath() {
-		return getAppRootPath() + "/src/main/java/com/mh/proj/manage/service/";
+		return getAppRootPath() + File.separator+"src"+File.separator+"main"+File.separator+"java"+File.separator+"com"+File.separator+"mh"+File.separator+"proj"+File.separator+"manage"+File.separator+"service"+File.separator;
 	}
 
 	public static String getProjJavaDAOImplPath() {
-		return getAppRootPath() + "/src/main/java/com/mh/proj/persist/dao/impl/";
+		return getAppRootPath() + File.separator+"src"+File.separator+"main"+File.separator+"java"+File.separator+"com"+File.separator+"mh"+File.separator+"proj"+File.separator+"persist"+File.separator+"dao"+File.separator+"impl"+File.separator;
 	}
 
 	public static String getProjJavaServiceImplPath() {
-		return getAppRootPath() + "/src/main/java/com/mh/proj/manage/service/impl/";
+		return getAppRootPath() + File.separator+"src"+File.separator+"main"+File.separator+"java"+File.separator+"com"+File.separator+"mh"+File.separator+"proj"+File.separator+"manage"+File.separator+"service"+File.separator+"impl"+File.separator;
 	}
 
 	public static String getProjJavaDomainPath() {
-		return getAppRootPath() + "/src/main/java/com/mh/proj/persist/domain/";
+		return getAppRootPath() + File.separator+"src"+File.separator+"main"+File.separator+"java"+File.separator+"com"+File.separator+"mh"+File.separator+"proj"+File.separator+"persist"+File.separator+"domain"+File.separator;
 	}
 
 	public static String getProjDomainClassPath(String simpleClassName) {
